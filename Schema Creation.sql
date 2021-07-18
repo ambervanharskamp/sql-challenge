@@ -6,6 +6,14 @@ DROP TABLE Department_Manager;
 DROP TABLE Salaries;
 DROP TABLE Titles;
 
+--Use to remove tables if there are errors
+DROP TABLE IF EXISTS departments cascade;
+DROP TABLE IF EXISTS dept_emp cascade;
+DROP TABLE IF EXISTS dept_manager cascade;
+DROP TABLE IF EXISTS employees cascade;
+DROP TABLE IF EXISTS salaries cascade;
+DROP TABLE IF EXISTS titles cascade;
+
 --CREATE ALL THE TABLES FOR THE CSVS
 -------------------------------------
 
@@ -32,11 +40,11 @@ CREATE TABLE employees (
 	emp_no INT PRIMARY KEY NOT NULL,
     emp_title_id VARCHAR NOT NULL,
     foreign key (emp_title_id) references titles(title_id)
-	birth_date DATE NOT NULL,
+	birth_date VARCHAR NOT NULL,
 	first_name VARCHAR NOT NULL,
 	last_name VARCHAR NOT NULL,
 	sex VARCHAR NOT NULL,
-	hire_date DATE NOT NULL
+	hire_date VARCHAR NOT NULL
 );
 
 --Check EMPLOYEES table was created
