@@ -3,6 +3,17 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 -- Data Modelling for Employee Database
+
+-- The tables were created by using QuickDBD and exporting the results. 
+
+--Before creating tables, the database is checked to make sure that tables do not already exist 
+DROP TABLE Employees;
+DROP TABLE Departments;
+DROP TABLE Department_Employees;
+DROP TABLE Department_Manager;
+DROP TABLE Salaries;
+DROP TABLE Titles;
+
 -- CSV 1: DEPARTMENTS
 -- Department number is the primary key
 -- Department number is present in DEPT_MANAGER AND DEPT_EMP CSVs
@@ -42,16 +53,16 @@ CREATE TABLE "employees" (
     -- Employee title ID is the primary key in the TITLES table.
     -- Here, it is a foreign key.
     "emp_title_id" VARCHAR   NOT NULL,
-    -- Employee birth date is a date object
-    "birth_date" DATE   NOT NULL,
+    -- Employee birth date is a string object
+    "birth_date" VARCHAR   NOT NULL,
     -- Employee first name is a string object
     "first_name" VARCHAR   NOT NULL,
     -- Employee last name is a string object
     "last_name" VARCHAR   NOT NULL,
     -- Employee sex is a string object
     "sex" VARCHAR   NOT NULL,
-    -- Employee hired date is a date object
-    "hire_date" DATE   NOT NULL,
+    -- Employee hire date is a string object
+    "hire_date" VARCHAR   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
      )
@@ -107,3 +118,4 @@ REFERENCES "employees" ("emp_no");
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
 
+--CSV files are uploaded in the same order as the tables have been created 
